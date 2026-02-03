@@ -1449,7 +1449,12 @@
 
             <div class="contact-form">
                 <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; color: var(--deep-blue); margin-bottom: 1.5rem;">Request Free Estimate</h3>
-                <form>
+                <form action="https://api.web3forms.com/submit" method="POST">
+                    <!-- Web3Forms Access Key - Replace YOUR_ACCESS_KEY_HERE with actual key from web3forms.com -->
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    <input type="hidden" name="subject" value="New Contact Form Submission - Prime Tech HVAC">
+                    <input type="hidden" name="from_name" value="Prime Tech Website">
+
                     <div class="form-group">
                         <label for="name">Full Name</label>
                         <input type="text" id="name" name="name" required>
@@ -1613,11 +1618,36 @@
             });
         });
 
-        // Form submission
+        // Form submission with Web3Forms
         document.querySelector('form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Thank you for your message! We will contact you shortly.');
-            this.reset();
+            const form = this;
+            const submitBtn = form.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+
+            submitBtn.textContent = 'Sending...';
+            submitBtn.disabled = true;
+
+            fetch('https://api.web3forms.com/submit', {
+                method: 'POST',
+                body: new FormData(form)
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('Thank you for your message! We will contact you shortly.');
+                    form.reset();
+                } else {
+                    alert('Oops! Something went wrong. Please try again or call us directly.');
+                }
+            })
+            .catch(error => {
+                alert('Oops! Something went wrong. Please try again or call us directly.');
+            })
+            .finally(() => {
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            });
         });
 
         // Intersection Observer for scroll animations
