@@ -1449,11 +1449,10 @@
 
             <div class="contact-form">
                 <h3 style="font-family: 'Outfit', sans-serif; font-size: 1.8rem; color: var(--deep-blue); margin-bottom: 1.5rem;">Request Free Estimate</h3>
-                <form action="https://api.web3forms.com/submit" method="POST">
-                    <!-- Web3Forms Access Key - Replace YOUR_ACCESS_KEY_HERE with actual key from web3forms.com -->
-                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
-                    <input type="hidden" name="subject" value="New Contact Form Submission - Prime Tech HVAC">
-                    <input type="hidden" name="from_name" value="Prime Tech Website">
+                <form action="https://formsubmit.co/marko@primetechhvac.com" method="POST">
+                    <input type="hidden" name="_subject" value="New Contact Form Submission - Prime Tech HVAC">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_next" value="https://prime-tech1.vercel.app/#contact">
 
                     <div class="form-group">
                         <label for="name">Full Name</label>
@@ -1618,36 +1617,12 @@
             });
         });
 
-        // Form submission with Web3Forms
+        // Form submission - shows loading state
         document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            const form = this;
-            const submitBtn = form.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-
+            const submitBtn = this.querySelector('.submit-btn');
             submitBtn.textContent = 'Sending...';
             submitBtn.disabled = true;
-
-            fetch('https://api.web3forms.com/submit', {
-                method: 'POST',
-                body: new FormData(form)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.success) {
-                    alert('Thank you for your message! We will contact you shortly.');
-                    form.reset();
-                } else {
-                    alert('Oops! Something went wrong. Please try again or call us directly.');
-                }
-            })
-            .catch(error => {
-                alert('Oops! Something went wrong. Please try again or call us directly.');
-            })
-            .finally(() => {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-            });
+            // Form submits normally to FormSubmit.co
         });
 
         // Intersection Observer for scroll animations
