@@ -1455,36 +1455,54 @@
         let mouseY = window.innerHeight / 2;
         let glowX = window.innerWidth / 2;
         let glowY = window.innerHeight / 2;
+        let glowVisible = false;
+
+        // Blue sections where glow should appear
+        const blueSections = document.querySelectorAll('.hero, .why-choose, .footer, .navbar');
+
+        function isOverBlueSection(x, y) {
+            for (let i = 0; i < blueSections.length; i++) {
+                const rect = blueSections[i].getBoundingClientRect();
+                if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         document.addEventListener('mousemove', function(e) {
-            mouseX = e.pageX;
-            mouseY = e.pageY;
-            
-            if (!mouseGlow.classList.contains('active')) {
-                mouseGlow.classList.add('active');
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+
+            if (isOverBlueSection(e.clientX, e.clientY)) {
+                if (!glowVisible) {
+                    glowVisible = true;
+                    mouseGlow.classList.add('active');
+                }
+            } else {
+                if (glowVisible) {
+                    glowVisible = false;
+                    mouseGlow.classList.remove('active');
+                }
             }
         });
 
-        document.addEventListener('mouseenter', function() {
-            mouseGlow.classList.add('active');
-        });
-
         document.addEventListener('mouseleave', function() {
+            glowVisible = false;
             mouseGlow.classList.remove('active');
         });
 
         // Smooth animation for glow following mouse
         function animateGlow() {
-            // Smooth following effect with easing
             glowX += (mouseX - glowX) * 0.2;
             glowY += (mouseY - glowY) * 0.2;
-            
+
             mouseGlow.style.left = glowX + 'px';
             mouseGlow.style.top = glowY + 'px';
-            
+
             requestAnimationFrame(animateGlow);
         }
-        
+
         animateGlow();
 
         // Navbar scroll effect
