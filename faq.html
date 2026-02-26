@@ -1222,14 +1222,13 @@
             width: 400px;
             height: 400px;
             border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 107, 53, 0.4) 0%, rgba(255, 107, 53, 0.2) 30%, transparent 70%);
+            background: radial-gradient(circle, rgba(255, 107, 53, 0.35) 0%, rgba(255, 107, 53, 0.15) 30%, transparent 70%);
             pointer-events: none;
-            z-index: 999;
+            z-index: 998;
             transform: translate(-50%, -50%);
-            transition: opacity 0.3s ease;
+            transition: opacity 0.4s ease;
             opacity: 0;
-            filter: blur(40px);
-            mix-blend-mode: screen;
+            filter: blur(30px);
         }
 
         .mouse-glow.active {
@@ -1989,13 +1988,13 @@
         let glowY = window.innerHeight / 2;
         let glowVisible = false;
 
-        const blueSections = document.querySelectorAll('.hero, .why-choose, .page-header, .footer, .navbar');
+        const blueSelectors = ['nav', '.hero', '.why-choose', '.page-header', '.cta-section', '.footer', '.navbar'];
 
         function isOverBlueSection(x, y) {
-            for (let i = 0; i < blueSections.length; i++) {
-                const rect = blueSections[i].getBoundingClientRect();
-                if (x >= rect.left && x <= rect.right && y >= rect.top && y <= rect.bottom) {
-                    return true;
+            const els = document.elementsFromPoint(x, y);
+            for (let i = 0; i < els.length; i++) {
+                for (let j = 0; j < blueSelectors.length; j++) {
+                    if (els[i].matches && els[i].matches(blueSelectors[j])) return true;
                 }
             }
             return false;
@@ -2004,10 +2003,13 @@
         document.addEventListener('mousemove', function(e) {
             mouseX = e.clientX;
             mouseY = e.clientY;
-            if (isOverBlueSection(e.clientX, e.clientY)) {
-                if (!glowVisible) { glowVisible = true; mouseGlow.classList.add('active'); }
-            } else {
-                if (glowVisible) { glowVisible = false; mouseGlow.classList.remove('active'); }
+            const overBlue = isOverBlueSection(e.clientX, e.clientY);
+            if (overBlue && !glowVisible) {
+                glowVisible = true;
+                mouseGlow.classList.add('active');
+            } else if (!overBlue && glowVisible) {
+                glowVisible = false;
+                mouseGlow.classList.remove('active');
             }
         });
 
@@ -2017,8 +2019,8 @@
         });
 
         function animateGlow() {
-            glowX += (mouseX - glowX) * 0.2;
-            glowY += (mouseY - glowY) * 0.2;
+            glowX += (mouseX - glowX) * 0.15;
+            glowY += (mouseY - glowY) * 0.15;
             mouseGlow.style.left = glowX + 'px';
             mouseGlow.style.top = glowY + 'px';
             requestAnimationFrame(animateGlow);
