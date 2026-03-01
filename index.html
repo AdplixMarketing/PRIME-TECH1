@@ -1242,23 +1242,30 @@
             }
 
             .nav-links {
-                display: none;
+                display: flex;
                 position: fixed;
                 top: 0;
                 right: 0;
                 width: 280px;
                 height: 100vh;
+                height: 100dvh;
                 background: var(--deep-blue);
                 flex-direction: column;
                 padding: 80px 2rem 2rem;
+                padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
                 gap: 0;
                 z-index: 1001;
                 box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
                 overflow-y: auto;
+                -webkit-overflow-scrolling: touch;
+                transform: translateX(100%);
+                visibility: hidden;
+                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s ease;
             }
 
             .nav-links.active {
-                display: flex;
+                transform: translateX(0);
+                visibility: visible;
             }
 
             .nav-links li {
@@ -1271,21 +1278,35 @@
                 font-size: 1.1rem;
                 border-bottom: 1px solid rgba(255, 255, 255, 0.1);
                 min-height: 44px;
+                display: flex;
+                align-items: center;
+            }
+
+            .nav-links a::after {
+                display: none;
             }
 
             .nav-links .cta-button {
                 margin-top: 1rem;
                 text-align: center;
                 border-bottom: none;
+                justify-content: center;
             }
 
             .mobile-overlay {
                 display: block;
                 pointer-events: none;
+                opacity: 0;
+                transition: opacity 0.3s ease;
             }
 
             .mobile-overlay.active {
                 pointer-events: auto;
+                opacity: 1;
+            }
+
+            .nav-container {
+                padding: 0 1rem;
             }
 
             .hero-container {
@@ -1667,11 +1688,13 @@
             background: rgba(0, 0, 0, 0.6);
             z-index: 999;
             opacity: 0;
+            pointer-events: none;
             transition: opacity 0.3s ease;
         }
 
         .mobile-overlay.active {
             opacity: 1;
+            pointer-events: auto;
         }
 
 
@@ -1741,7 +1764,7 @@
                 <img src="logo.png" alt="Prime Tech Logo" class="logo-image">
                 <span>Prime Tech</span>
             </a>
-            <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+            <button class="hamburger" id="hamburger" aria-label="Toggle navigation menu" aria-expanded="false"><span></span><span></span><span></span></button>
             <ul class="nav-links">
                 <li><a href="index.html" style="color: var(--orange);">Home</a></li>
                 <li><a href="services.html">Services</a></li>
@@ -1938,33 +1961,52 @@
         const navLinks = document.querySelector('.nav-links');
         const mobileOverlay = document.getElementById('mobileOverlay');
 
+        function closeMenu() {
+            hamburger.classList.remove('active');
+            navLinks.classList.remove('active');
+            if (mobileOverlay) mobileOverlay.classList.remove('active');
+            hamburger.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
         if (hamburger && navLinks) {
             hamburger.addEventListener('click', function() {
-                this.classList.toggle('active');
-                navLinks.classList.toggle('active');
-                if (mobileOverlay) mobileOverlay.classList.toggle('active');
-                document.body.style.overflow = navLinks.classList.contains('active') ? 'hidden' : '';
+                const isOpen = navLinks.classList.contains('active');
+                if (isOpen) {
+                    closeMenu();
+                } else {
+                    this.classList.add('active');
+                    navLinks.classList.add('active');
+                    if (mobileOverlay) mobileOverlay.classList.add('active');
+                    this.setAttribute('aria-expanded', 'true');
+                    document.body.style.overflow = 'hidden';
+                }
             });
 
             // Close menu when a link is clicked
             navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    if (mobileOverlay) mobileOverlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
+                link.addEventListener('click', () => closeMenu());
             });
 
             // Close menu on outside click
             if (mobileOverlay) {
-                mobileOverlay.addEventListener('click', () => {
-                    hamburger.classList.remove('active');
-                    navLinks.classList.remove('active');
-                    mobileOverlay.classList.remove('active');
-                    document.body.style.overflow = '';
-                });
+                mobileOverlay.addEventListener('click', () => closeMenu());
             }
+
+            // Close menu on Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+                    closeMenu();
+                    hamburger.focus();
+                }
+            });
+
+            // Close menu if resized to desktop
+            window.addEventListener('resize', function() {
+                if (window.innerWidth > 968 && navLinks.classList.contains('active')) {
+                    closeMenu();
+                }
+            });
         }
 
         // Mouse glow effect
