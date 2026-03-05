@@ -1,377 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth;">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Review the terms of service for PrimeTech Heating and Cooling. Understand the conditions of using our website and services.">
     <meta name="keywords" content="terms of service, terms and conditions, PrimeTech terms">
-    <link rel="canonical" href="terms-of-service.html">
+    <link rel="canonical" href="https://www.primetechhvac.com/terms-of-service.html">
     <meta property="og:title" content="Terms of Service | PrimeTech Heating and Cooling">
     <meta property="og:description" content="Review the terms of service for PrimeTech Heating and Cooling. Understand the conditions of using our website and services.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="terms-of-service.html">
+    <meta property="og:url" content="https://www.primetechhvac.com/terms-of-service.html">
+    <meta property="og:image" content="https://www.primetechhvac.com/FullLogo_Transparent_NoBuffer.png">
     <meta name="twitter:card" content="summary">
     <meta name="twitter:title" content="Terms of Service | PrimeTech Heating and Cooling">
     <meta name="twitter:description" content="Review the terms of service for PrimeTech Heating and Cooling. Understand the conditions of using our website and services.">
+    <meta name="twitter:image" content="https://www.primetechhvac.com/FullLogo_Transparent_NoBuffer.png">
     <title>Terms of Service | PrimeTech Heating and Cooling</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --deep-blue: #0A2463;
-            --medium-blue: #1E3A8A;
-            --orange: #FF6B35;
-            --light-orange: #FF8C61;
-            --dark-orange: #E85A2A;
-            --white: #FFFFFF;
-            --light-gray: #F8F9FA;
-            --text-dark: #1A1A1A;
-        }
-
-        body {
-            font-family: 'Inter', sans-serif;
-            color: var(--text-dark);
-            line-height: 1.8;
-            background: var(--light-gray);
-        }
-
-        .navbar {
-            background: var(--deep-blue);
-            padding: 1.2rem 0;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: var(--white);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .logo-image {
-            height: 60px;
-            width: auto;
-        }
-
-        .back-link {
-            color: var(--orange);
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .back-link:hover {
-            color: var(--light-orange);
-        }
-
-        .content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 3rem 2rem;
-        }
-
-        .content-card {
-            background: var(--white);
-            border-radius: 16px;
-            padding: 3rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        h1 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 2.5rem;
-            color: var(--deep-blue);
-            margin-bottom: 0.5rem;
-        }
-
-        .last-updated {
-            color: #666;
-            margin-bottom: 2rem;
-            font-size: 0.9rem;
-        }
-
-        h2 {
-            font-family: 'Outfit', sans-serif;
-            font-size: 1.4rem;
-            color: var(--deep-blue);
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-
-        p {
-            margin-bottom: 1rem;
-            color: #444;
-        }
-
-        ul {
-            margin-bottom: 1rem;
-            padding-left: 1.5rem;
-        }
-
-        li {
-            margin-bottom: 0.5rem;
-            color: #444;
-        }
-
-        .contact-info {
-            background: var(--light-gray);
-            padding: 1.5rem;
-            border-radius: 8px;
-            margin-top: 2rem;
-        }
-
-        .contact-info p {
-            margin-bottom: 0.5rem;
-        }
-
-        .footer {
-            background: var(--deep-blue);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
-        }
-
-        .footer p {
-            color: var(--white);
-        }
-
-        .footer a {
-            color: var(--orange);
-            text-decoration: none;
-        }
-    
-        /* Hamburger Menu */
-        .hamburger {
-            display: none;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 10px;
-            cursor: pointer;
-            padding: 10px;
-            z-index: 1002;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger:hover,
-        .hamburger:focus-visible {
-            background: rgba(255, 107, 53, 0.2);
-            border-color: var(--orange);
-            outline: none;
-        }
-
-        .hamburger.active {
-            background: var(--orange);
-            border-color: var(--orange);
-        }
-
-        .hamburger span {
-            display: block;
-            width: 22px;
-            height: 2.5px;
-            background: var(--white);
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        .hamburger span:nth-child(1) {
-            margin-bottom: 5px;
-        }
-
-        .hamburger span:nth-child(3) {
-            margin-top: 5px;
-        }
-
-        .hamburger.active span:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 6px);
-        }
-
-        .hamburger.active span:nth-child(2) {
-            opacity: 0;
-        }
-
-        .hamburger.active span:nth-child(3) {
-            transform: rotate(-45deg) translate(5px, -6px);
-        }
-
-        .mobile-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 999;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s ease;
-        }
-
-        .mobile-overlay.active {
-            opacity: 1;
-            pointer-events: auto;
-        }
-
-
-        @media (max-width: 968px) {
-            .hamburger {
-                display: flex;
-            }
-
-            .nav-links {
-                display: flex;
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 280px;
-                height: 100vh;
-                height: 100dvh;
-                background: var(--deep-blue);
-                flex-direction: column;
-                padding: 80px 2rem 2rem;
-                padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
-                gap: 0;
-                z-index: 1001;
-                box-shadow: -4px 0 20px rgba(0, 0, 0, 0.3);
-                overflow-y: auto;
-                -webkit-overflow-scrolling: touch;
-                transform: translateX(100%);
-                visibility: hidden;
-                transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0.3s ease;
-            }
-
-            .nav-links.active {
-                transform: translateX(0);
-                visibility: visible;
-            }
-
-            .nav-links li {
-                width: 100%;
-            }
-
-            .nav-links a {
-                display: block;
-                padding: 14px 0;
-                font-size: 1.1rem;
-                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-                min-height: 44px;
-                display: flex;
-                align-items: center;
-            }
-
-            .nav-links a::after {
-                display: none;
-            }
-
-            .nav-links .cta-button {
-                margin-top: 1rem;
-                text-align: center;
-                border-bottom: none;
-                justify-content: center;
-            }
-
-            .mobile-overlay {
-                display: block;
-                pointer-events: none;
-                opacity: 0;
-                transition: opacity 0.3s ease;
-            }
-
-            .mobile-overlay.active {
-                pointer-events: auto;
-                opacity: 1;
-            }
-
-            .nav-container {
-                padding: 0 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero-content h1 {
-                font-size: 1.8rem;
-            }
-
-            .hero-content p {
-                font-size: 0.95rem;
-            }
-
-            .section-title {
-                font-size: 1.6rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                width: 100%;
-            }
-
-            .hero-buttons .btn,
-            .hero-buttons .cta-button,
-            .hero-buttons a {
-                width: 100%;
-                text-align: center;
-            }
-
-            .service-card,
-            .about-card,
-            .faq-item {
-                padding: 1.2rem;
-            }
-
-            .footer-content {
-                padding: 0 1rem;
-            }
-
-            input, textarea, select {
-                font-size: 16px !important;
-            }
-
-            .cta-button {
-                width: 100%;
-                text-align: center;
-            }
-
-            .page-header {
-                padding: 120px 1rem 60px;
-            }
-
-            .page-header h1 {
-                font-size: 1.8rem;
-            }
-        }
-
-    </style>
+    <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body class="legal-page">
         <nav class="navbar" id="navbar">
         <div class="nav-container">
-            <a href="index.html" class="logo" style="text-decoration: none;">
+            <a href="index.html" class="logo">
                 <img src="FullLogo_Transparent_NoBuffer.png" alt="PrimeTech Logo" class="logo-image">
 
             </a>
@@ -386,8 +39,9 @@
             </ul>
         </div>
     </nav>
-    <div class="mobile-overlay" id="mobileOverlay"></div>
+    <div class="mobile-overlay" id="mobileOverlay" role="presentation"></div>
 
+    <main>
     <div class="content">
         <div class="content-card">
             <h1>Terms of Service</h1>
@@ -466,65 +120,12 @@
             </div>
         </div>
     </div>
+    </main>
 
         <footer class="footer">
         <p>&copy; 2026 PrimeTech Heating and Cooling. All rights reserved.</p>
         <p style="margin-top: 0.5rem;"><a href="index.html">Home</a> | <a href="privacy-policy.html">Privacy Policy</a> | <a href="terms-of-service.html">Terms of Service</a></p>
     </footer>
-    <script>
-        // Hamburger menu
-        const hamburger = document.getElementById('hamburger');
-        const navLinks = document.querySelector('.nav-links');
-        const mobileOverlay = document.getElementById('mobileOverlay');
-
-        function closeMenu() {
-            hamburger.classList.remove('active');
-            navLinks.classList.remove('active');
-            if (mobileOverlay) mobileOverlay.classList.remove('active');
-            hamburger.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
-        }
-
-        if (hamburger && navLinks) {
-            hamburger.addEventListener('click', function() {
-                const isOpen = navLinks.classList.contains('active');
-                if (isOpen) {
-                    closeMenu();
-                } else {
-                    this.classList.add('active');
-                    navLinks.classList.add('active');
-                    if (mobileOverlay) mobileOverlay.classList.add('active');
-                    this.setAttribute('aria-expanded', 'true');
-                    document.body.style.overflow = 'hidden';
-                }
-            });
-
-            // Close menu when a link is clicked
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => closeMenu());
-            });
-
-            // Close menu on outside click
-            if (mobileOverlay) {
-                mobileOverlay.addEventListener('click', () => closeMenu());
-            }
-
-            // Close menu on Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && navLinks.classList.contains('active')) {
-                    closeMenu();
-                    hamburger.focus();
-                }
-            });
-
-            // Close menu if resized to desktop
-            window.addEventListener('resize', function() {
-                if (window.innerWidth > 968 && navLinks.classList.contains('active')) {
-                    closeMenu();
-                }
-            });
-        }
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
