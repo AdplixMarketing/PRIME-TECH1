@@ -333,7 +333,7 @@
         for (var i = 0; i < solidSteps; i++) {
             var t = i / solidSteps;
             var radius = innerR * (1 - t * 0.3);
-            var opacity = 0.02 + t * 0.015;
+            var opacity = 0.05 + t * 0.03;
             L.circle(center, {
                 radius: radius,
                 color: 'transparent',
