@@ -316,14 +316,26 @@
             maxZoom: 19
         }).addTo(map);
 
-        L.circle([41.72, -87.95], {
-            radius: 28000,
-            color: '#FF6B35',
-            weight: 3,
-            fillColor: '#FF6B35',
-            fillOpacity: 0.15,
-            dashArray: '8, 6'
-        }).addTo(map);
+        var center = [41.72, -87.95];
+        var layers = [
+            { radius: 34000, opacity: 0.03 },
+            { radius: 32000, opacity: 0.05 },
+            { radius: 30000, opacity: 0.07 },
+            { radius: 28000, opacity: 0.10 },
+            { radius: 26000, opacity: 0.13 },
+            { radius: 24000, opacity: 0.16 },
+            { radius: 22000, opacity: 0.12 },
+            { radius: 20000, opacity: 0.08 }
+        ];
+        layers.forEach(function(l) {
+            L.circle(center, {
+                radius: l.radius,
+                color: 'transparent',
+                weight: 0,
+                fillColor: '#FF6B35',
+                fillOpacity: l.opacity
+            }).addTo(map);
+        });
 
     })();
     </script>
