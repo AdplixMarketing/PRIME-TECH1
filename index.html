@@ -22,6 +22,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
     <link rel="stylesheet" href="styles.css">
     <script type="application/ld+json">
     {
@@ -87,23 +88,25 @@
                 </div>
             </div>
             <div class="hero-image">
-                <div class="hero-card">
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number">100%</span>
-                            <span class="stat-label">Customer Satisfaction</span>
+                <div class="hero-card service-area-card">
+                    <h3 class="map-title">Our Service Area</h3>
+                    <div id="service-map"></div>
+                    <div class="hero-stats" style="grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1rem;">
+                        <div class="stat-item" style="text-align: center;">
+                            <span class="stat-number" style="font-size: 1rem;">100%</span>
+                            <span class="stat-label" style="font-size: 0.65rem;">Satisfaction</span>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">FREE</span>
-                            <span class="stat-label">Estimates</span>
+                        <div class="stat-item" style="text-align: center;">
+                            <span class="stat-number" style="font-size: 1rem;">FREE</span>
+                            <span class="stat-label" style="font-size: 0.65rem;">Estimates</span>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">✓</span>
-                            <span class="stat-label">Licensed & Insured</span>
+                        <div class="stat-item" style="text-align: center;">
+                            <span class="stat-number" style="font-size: 1rem;">✓</span>
+                            <span class="stat-label" style="font-size: 0.65rem;">Licensed</span>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-number">💳</span>
-                            <span class="stat-label">Financing Available</span>
+                        <div class="stat-item" style="text-align: center;">
+                            <span class="stat-number" style="font-size: 1rem;">💳</span>
+                            <span class="stat-label" style="font-size: 0.65rem;">Financing</span>
                         </div>
                     </div>
                 </div>
@@ -294,6 +297,66 @@
             <p style="margin-top: 0.5rem;"><a href="privacy-policy.html" style="color: var(--orange); text-decoration: none;">Privacy Policy</a> | <a href="terms-of-service.html" style="color: var(--orange); text-decoration: none;">Terms of Service</a></p>
         </div>
     </footer>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="script.js"></script>
+    <script>
+    (function() {
+        var map = L.map('service-map', {
+            center: [41.72, -87.95],
+            zoom: 10,
+            zoomControl: false,
+            attributionControl: false,
+            scrollWheelZoom: false,
+            dragging: false,
+            doubleClickZoom: false,
+            touchZoom: false
+        });
+
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            maxZoom: 19
+        }).addTo(map);
+
+        var serviceArea = [
+            [41.90, -87.83],
+            [41.89, -87.94],
+            [41.87, -88.00],
+            [41.84, -88.10],
+            [41.80, -88.18],
+            [41.75, -88.25],
+            [41.68, -88.28],
+            [41.60, -88.22],
+            [41.55, -88.15],
+            [41.52, -88.08],
+            [41.52, -87.95],
+            [41.53, -87.85],
+            [41.55, -87.75],
+            [41.58, -87.68],
+            [41.63, -87.65],
+            [41.70, -87.65],
+            [41.78, -87.68],
+            [41.83, -87.72],
+            [41.87, -87.75],
+            [41.90, -87.80],
+            [41.90, -87.83]
+        ];
+
+        L.polygon(serviceArea, {
+            color: '#FF6B35',
+            weight: 3,
+            fillColor: '#FF6B35',
+            fillOpacity: 0.15,
+            dashArray: '8, 6'
+        }).addTo(map);
+
+        L.marker([41.72, -87.95], {
+            icon: L.divIcon({
+                className: 'map-label',
+                html: '<div style="background: #0A2463; color: white; padding: 4px 10px; border-radius: 6px; font-family: Outfit, sans-serif; font-weight: 700; font-size: 12px; white-space: nowrap; box-shadow: 0 2px 8px rgba(0,0,0,0.3);">PrimeTech Service Area</div>',
+                iconSize: [160, 30],
+                iconAnchor: [80, 15]
+            })
+        }).addTo(map);
+    })();
+    </script>
 </body>
 </html>
