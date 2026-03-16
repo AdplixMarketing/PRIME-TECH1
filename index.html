@@ -314,25 +314,20 @@
         }).addTo(map);
 
         var center = [41.72, -87.95];
-        var layers = [
-            { radius: 34000, opacity: 0.03 },
-            { radius: 32000, opacity: 0.05 },
-            { radius: 30000, opacity: 0.07 },
-            { radius: 28000, opacity: 0.10 },
-            { radius: 26000, opacity: 0.13 },
-            { radius: 24000, opacity: 0.16 },
-            { radius: 22000, opacity: 0.12 },
-            { radius: 20000, opacity: 0.08 }
-        ];
-        layers.forEach(function(l) {
+        var maxR = 35000;
+        var steps = 40;
+        for (var i = 0; i < steps; i++) {
+            var t = i / steps;
+            var radius = maxR * (1 - t * 0.6);
+            var opacity = 0.012 + t * t * 0.06;
             L.circle(center, {
-                radius: l.radius,
+                radius: radius,
                 color: 'transparent',
                 weight: 0,
                 fillColor: '#FF6B35',
-                fillOpacity: l.opacity
+                fillOpacity: opacity
             }).addTo(map);
-        });
+        }
 
     })();
     </script>
