@@ -320,7 +320,7 @@
         for (var i = 0; i < fadeSteps; i++) {
             var t = i / fadeSteps;
             var radius = outerR - t * (outerR - innerR);
-            var opacity = 0.01 + t * t * 0.08;
+            var opacity = 0.005 + t * t * 0.02;
             L.circle(center, {
                 radius: radius,
                 color: 'transparent',
@@ -333,7 +333,7 @@
         for (var i = 0; i < solidSteps; i++) {
             var t = i / solidSteps;
             var radius = innerR * (1 - t * 0.3);
-            var opacity = 0.08 + t * 0.04;
+            var opacity = 0.02 + t * 0.015;
             L.circle(center, {
                 radius: radius,
                 color: 'transparent',
