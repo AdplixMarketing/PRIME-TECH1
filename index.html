@@ -314,12 +314,12 @@
         }).addTo(map);
 
         var center = [41.72, -87.95];
-        var maxR = 35000;
-        var steps = 40;
+        var maxR = 45000;
+        var steps = 25;
         for (var i = 0; i < steps; i++) {
             var t = i / steps;
-            var radius = maxR * (1 - t * 0.6);
-            var opacity = 0.012 + t * t * 0.06;
+            var radius = maxR * (1 - t * 0.2);
+            var opacity = 0.008 + t * t * 0.04;
             L.circle(center, {
                 radius: radius,
                 color: 'transparent',
