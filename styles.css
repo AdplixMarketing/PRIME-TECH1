@@ -765,6 +765,7 @@ body {
     background: var(--deep-blue);
     position: relative;
     overflow: hidden;
+    margin-top: -1px;
 }
 
 .why-choose::before {
@@ -852,7 +853,8 @@ body {
 /* Reviews Section */
 .reviews-section {
     padding: 6rem 0;
-    background: var(--light-gray);
+    padding-top: 8rem;
+    background: linear-gradient(to bottom, var(--deep-blue) 0%, var(--light-gray) 12%, var(--light-gray) 100%);
     position: relative;
     overflow: hidden;
 }
@@ -1101,9 +1103,10 @@ body {
 
 /* Footer */
 .footer {
-    background: var(--deep-blue);
+    background: linear-gradient(to bottom, var(--light-gray) 0%, var(--deep-blue) 8%, var(--deep-blue) 100%);
     color: var(--white);
     padding: 4rem 0 2rem;
+    padding-top: 6rem;
 }
 
 .footer-content {
@@ -1625,7 +1628,9 @@ body {
 /* Home highlights */
 .highlights {
     padding: 80px 0;
-    background: var(--light-gray);
+    padding-top: 120px;
+    background: linear-gradient(to bottom, var(--deep-blue) 0%, var(--light-gray) 12%, var(--light-gray) 88%, var(--deep-blue) 100%);
+    position: relative;
 }
 
 .highlights-grid {
