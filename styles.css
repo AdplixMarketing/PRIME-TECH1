@@ -1314,24 +1314,6 @@ body {
 }
 
 /* Mouse Glow Effect */
-.mouse-glow {
-    position: fixed;
-    width: 400px;
-    height: 400px;
-    border-radius: 50%;
-    background: radial-gradient(circle, rgba(255, 107, 53, 0.35) 0%, rgba(255, 107, 53, 0.15) 30%, transparent 70%);
-    pointer-events: none;
-    z-index: 998;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.4s ease;
-    opacity: 0;
-    filter: blur(30px);
-}
-
-.mouse-glow.active {
-    opacity: 1;
-}
-
 /* Hamburger Menu */
 .hamburger {
     display: none;
@@ -1669,10 +1651,6 @@ body {
 
 /* Responsive */
 @media (max-width: 968px) {
-    .mouse-glow {
-        display: none !important;
-    }
-
     .hamburger {
         display: flex;
     }

@@ -64,61 +64,7 @@
 })();
 
 /* ------------------------------------------
-   2. Mouse Glow Effect (blue section detection)
-   ------------------------------------------ */
-(function () {
-    const mouseGlow = document.getElementById('mouseGlow');
-    if (!mouseGlow) return;
-
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let glowX = window.innerWidth / 2;
-    let glowY = window.innerHeight / 2;
-    let glowVisible = false;
-
-    const blueSelectors = ['nav', '.hero', '.why-choose', '.page-header', '.cta-section', '.footer', '.navbar'];
-
-    function isOverBlueSection(x, y) {
-        const els = document.elementsFromPoint(x, y);
-        for (let i = 0; i < els.length; i++) {
-            for (let j = 0; j < blueSelectors.length; j++) {
-                if (els[i].matches && els[i].matches(blueSelectors[j])) return true;
-            }
-        }
-        return false;
-    }
-
-    document.addEventListener('mousemove', function (e) {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-        const overBlue = isOverBlueSection(e.clientX, e.clientY);
-        if (overBlue && !glowVisible) {
-            glowVisible = true;
-            mouseGlow.classList.add('active');
-        } else if (!overBlue && glowVisible) {
-            glowVisible = false;
-            mouseGlow.classList.remove('active');
-        }
-    });
-
-    document.addEventListener('mouseleave', function () {
-        glowVisible = false;
-        mouseGlow.classList.remove('active');
-    });
-
-    function animateGlow() {
-        glowX += (mouseX - glowX) * 0.15;
-        glowY += (mouseY - glowY) * 0.15;
-        mouseGlow.style.left = glowX + 'px';
-        mouseGlow.style.top = glowY + 'px';
-        requestAnimationFrame(animateGlow);
-    }
-
-    animateGlow();
-})();
-
-/* ------------------------------------------
-   3. Navbar Scroll Effect
+   2. Navbar Scroll Effect
    ------------------------------------------ */
 (function () {
     const navbar = document.getElementById('navbar');
